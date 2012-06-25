@@ -13,14 +13,20 @@ print("Opening PostGIS Workspace..."); //http://geoscript.org/js/api/workspace.h
 var PostGIS_Database= new WORKSPACE.PostGIS({database: "GeoScript_Test", host: "192.168.10.140", password: "p0stGISAdm!n", port: "5432", schema: "public", user: "postgres"});
 print(PostGIS_Database);
 
-var TestLayer = PostGIS_Database.get("TestLayer");
+var TableDemElevation = PostGIS_Database.get("demelevation");
 //print(Elevation.bounds);
 //print(Elevation.count);
 
-//TestLayer.features.forEach(function(feature) {
-//	print(feature.toString());
-//	VIEWER.draw(feature);
-//});
+//var Map = new MAP.Map();
+//Map.add(Raster);
+//Map.render();
+
+//VIEWER.draw(TestLayer);
+
+TableDemElevation.features.forEach(function(feature) {
+	print(feature.toString());
+	VIEWER.draw(feature);
+});
 
 //var rect = new FEATURE.Feature({
 //	values: {
@@ -37,19 +43,19 @@ var TestLayer = PostGIS_Database.get("TestLayer");
 //print("Rect.bounds: " + rect.bounds);
 
 //var Point = new GEOM.Point([0, 0]);	//Create a new point at the coordinates [X, Y].
-var bufferDistance = 3;
-var bufferOptions = {segs: 8, caps: GEOM.BUFFER_CAP_ROUND, single: false };
+//var bufferDistance = 3;
+//var bufferOptions = {segs: 8, caps: GEOM.BUFFER_CAP_ROUND, single: false };
 //var PointBuffer = Point.buffer(bufferDistance, bufferOptions);
 //VIEWER.draw(PointBuffer);
 
-var point = new FEATURE.Feature({
-	values: {
-		geom: new GEOM.Point([-3, -3]).buffer(bufferDistance, bufferOptions),
-		name: "Point"
-	}
-});
-var PointLayer = PostGIS_Database.get("Circle");
-PointLayer.add(point);
+//var point = new FEATURE.Feature({
+//	values: {
+//		geom: new GEOM.Point([-3, -3]).buffer(bufferDistance, bufferOptions),
+//		name: "Point"
+//	}
+//});
+//var PointLayer = PostGIS_Database.get("Circle");
+//PointLayer.add(point);
 
 //TestLayer.query("INTERSECTS(geom, POINT(0 0))").forEach(function(feature) {
 //	print(feature.toString());
