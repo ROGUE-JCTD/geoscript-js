@@ -40,7 +40,7 @@ var meta = {
     	connection: null,
         driver: new Packages.org.postgresql.Driver,
         setUp: function() {
-            var uri = "jdbc:postgresql://localhost:5432/postgres";
+            var uri = "jdbc:postgresql://localhost:54321/postgres";
             var params = new java.util.Properties();
             params.setProperty("user", "postgres");
             params.setProperty("password", "postgres");
